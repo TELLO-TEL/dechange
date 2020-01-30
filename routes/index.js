@@ -1,13 +1,8 @@
 
-var User = require('../Schema/User')
-var mongoose = require('mongoose')
+var User = require('../schema/User')
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
-var path = require('path');
-var rn = require('random-number');
-var oxrTransform = require('oxr-to-linear-presets');
-const https = require('https');
+
 
 var oxr = require('open-exchange-rates');
 oxr.set({ app_id: '2442753a9509483f995c8cccc7edf686' })
@@ -38,13 +33,17 @@ var rateData = [];
   User.find({})
     .then(docs => {
   
+
+
        zimbabwe = docs[0].sell
         oxr.latest( function () {
+      console.log(oxr.rates)
+
 
       rateData.push({
         "name": "Zimbabwean Dollar",
         "symbol": "ZWL",
-        "buy": 1 / zimbabwe,
+        "buy": parseFloat((1 / zimbabwe).toFixed(4)),
         "selling":zimbabwe,
         "flag": 'zw'
     
@@ -53,8 +52,8 @@ var rateData = [];
         rateData.push({
           "name": "Botswana Pula",
           "symbol": "BWP",
-          "buy": 1 / oxr.rates.BWP,
-          "selling": oxr.rates.BWP,
+          "buy": parseFloat((1 / oxr.rates.BWP).toFixed(4)),
+          "selling":parseFloat(oxr.rates.BWP.toFixed(4)) ,
           "flag": 'bw'
     
         })
@@ -62,8 +61,8 @@ var rateData = [];
         rateData.push({
           "name": "Canadian Dollar",
           "symbol": "CAD",
-          "buy": 1 / oxr.rates.CAD,
-          "selling": oxr.rates.CAD,
+          "buy": parseFloat((1 / oxr.rates.CAD).toFixed(4)),
+          "selling": parseFloat(oxr.rates.CAD.toFixed(4)),
           "flag": 'ca'
     
         })
@@ -71,8 +70,8 @@ var rateData = [];
         rateData.push({
           "name": "Chinese Yuan",
           "symbol": "CNY",
-          "buy": 1 / oxr.rates.CNY,
-          "selling": oxr.rates.CNY,
+          "buy": parseFloat((1 / oxr.rates.CNY).toFixed(4)),
+          "selling": parseFloat(oxr.rates.CNY.toFixed(4)),
           "flag": 'cn'
     
         })
@@ -81,8 +80,8 @@ var rateData = [];
         rateData.push({
           "name": "Euro",
           "symbol": "EUR",
-          "buy": 1 / oxr.rates.EUR,
-          "selling": oxr.rates.EUR,
+          "buy": parseFloat((1 / oxr.rates.EUR).toFixed(4)),
+          "selling": parseFloat(oxr.rates.EUR.toFixed(4)),
           "flag": 'gb'
     
         })
@@ -90,8 +89,8 @@ var rateData = [];
         rateData.push({
           "name": "British Pound",
           "symbol": "GBP",
-          "buy": 1 / oxr.rates.GBP,
-          "selling": oxr.rates.GBP,
+          "buy": parseFloat((1 / oxr.rates.GBP).toFixed(4)),
+          "selling": parseFloat(oxr.rates.GBP.toFixed(4)),
           "flag": 'gb'
     
         })
@@ -100,8 +99,8 @@ var rateData = [];
         rateData.push({
           "name": "South African Rand",
           "symbol": "ZAR",
-          "buy": 1 / oxr.rates.ZAR,
-          "selling": oxr.rates.ZAR,
+          "buy": parseFloat((1 / oxr.rates.ZAR).toFixed(4)),
+          "selling": parseFloat(oxr.rates.ZAR.toFixed(4)),
           "flag": 'za'
     
         })
@@ -109,18 +108,18 @@ var rateData = [];
         rateData.push({
           "name": "Zambian Kwacha",
           "symbol": "ZMW",
-          "buy": 1 / oxr.rates.ZMW,
-          "selling": oxr.rates.ZMW,
+          "buy": parseFloat((1 / oxr.rates.ZMW).toFixed(4)),
+          "selling": parseFloat(oxr.rates.ZMW.toFixed(4)),
           "flag": 'zm'
     
         })
     
       rateData.push({
-          "name": "Kenyan Shilling",
-          "symbol": "KES",
-          "buy": 1 / oxr.rates.KES,
-          "selling": oxr.rates.KES,
-          "flag": 'ke'
+          "name": "Australian Dollar",
+          "symbol": "AUD",
+          "buy": parseFloat((1 / oxr.rates.AUD).toFixed(4)),
+          "selling": parseFloat(oxr.rates.AUD.toFixed(4)),
+          "flag": 'au'
     
         })
   

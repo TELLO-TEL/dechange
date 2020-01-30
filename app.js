@@ -6,6 +6,9 @@ var logger = require('morgan');
 var mongoose = require('mongoose')
 
 
+process.env.NODE_ENV = 'production';
+
+
 var dbs =  process.env.MONGO_URI || 'mongodb://exchange:exchange1@ds255577.mlab.com:55577/exchange'
 
 mongoose.connect(dbs,{ useNewUrlParser: true  ,useFindAndModify:false});
