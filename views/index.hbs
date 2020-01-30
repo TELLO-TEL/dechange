@@ -1,0 +1,65 @@
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">EXCHANGE RATES </h4>
+                  <p class="card-category" id="date2"> Base Currency is USD </p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Flag
+                        </th>
+                         <th>
+                          SYMBOL
+                        </th>
+                        <th>
+                          CURRENCY
+                        </th>
+                        <th>
+                          WE BUY
+                        </th>
+                        <th>
+                          WE SELL
+                        </th>
+                       
+                      </thead>
+                      <tbody>
+
+                          {{#each rateDatas}}
+                         
+                        <tr>
+                          <td>
+                            <i class="flag-icon-background"></i>
+
+                            <span class="flag-icon flag-icon-{{this.flag}}"></span>
+                           
+                          </td>
+                          <td>
+                            {{this.symbol}}
+                          </td>
+                          <td>
+                            {{this.name}}
+                          </td>
+                          <td class="text-primary">
+                            {{this.buy}}
+                          </td>
+                          <td class="text-primary">
+                            {{this.selling}}
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
